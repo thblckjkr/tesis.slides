@@ -30,12 +30,16 @@
 	.columns {
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		justify-content: space-around;
 		align-items: stretch;
 	}
 
-	.column {}
+	.png-fill{
+		/* Background color for png's */
+		background-color: #fff;
+	}
+
 </style>
 
 <body>
@@ -107,20 +111,23 @@
 
 			<!-- Justificación -->
 			<section>
-				<h2>Impactos</h2>
+				<h2 style="margin-bottom: 5rem;">Impactos</h2>
 				<!-- Three columns of divs, each with an SVG icon -->
 				<div class="columns">
 					<div class="column fragment">
 						<object type="image/svg+xml" data="img/svg/bulb.svg" style="height: 200px; float: left;">
 						</object>
+						<p style="margin-top: 1rem;">Integración</p>
 					</div>
 					<div class="column fragment">
 						<object type="image/svg+xml" data="img/svg/money.svg" style="height: 200px; float: left;">
 						</object>
+						<p style="margin-top: 1rem;">Eficiencia</p>
 					</div>
 					<div class="column fragment">
 						<object type="image/svg+xml" data="img/svg/eco-gear.svg" style="height: 200px; float: left;">
 						</object>
+						<p style="margin-top: 1rem;">Disponibilidad</p>
 					</div>
 					<aside class="notes">
 						<p>
@@ -249,20 +256,114 @@
 					<h3>Análisis</h3>
 					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg" class="r-stretch">
 					</object>
+					<aside class="notes">
+						<p>Comencemos por el principio</p>
+					</aside>
 				</section>
 
 				<!-- Análisis, de las estaciones -->
 				<section data-auto-animate>
-					<section data-auto-animate>
-						<div style="display: block;">
-							<h3>Análisis</h3>
-							<p></p>
-							<img src="img/analisis/conexion.png" alt="Estaciones" />
+					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
+						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
+					</object>
+					<h3>Análisis</h3>
+					<div class="r-stack">
+						<img class="" data-src="img/analisis/red_lcca.drawio.png" alt="Estaciones" width="700"/>
+						<img class="fragment" data-src="img/analisis/station_campbell.jpg" alt="Estacion campbell" width="700"/>
+					</div>
+				</section>
+
+				<!-- Selección de herramientas, servidor -->
+				<section data-auto-animate>
+					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
+						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
+					</object>
+					<h4>
+						Selección de herramientas
+						<br>
+						<small>Servidor</small>
+					</h4>
+					<div class="r-stack">
+						<!-- Python logo -->
+						<div style="background-color: #fff;" class="">
+							<img data-src="img/analisis/python_logo.png" alt="Python" width="700"/>
 						</div>
-						<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
-							style="height: 200px; float: left;">
-						</object>
-					</section>
+
+						<!-- Fastapi logo -->
+						<div style="background-color: #fff;" class="fragment">
+							<img data-src="img/analisis/fastapi_logo.png" alt="Fasapi" width="700"/>
+						</div>
+
+						<!-- Masonite-orm logo -->
+						<div style="background-color: #fff;" class="fragment">
+							<img data-src="img/analisis/masonite-orm_logo.png" alt="MasoniteORm" width="400"/>
+						</div>
+
+						<!-- MariaDB -->
+						<div style="background-color: #fff;" class="fragment">
+							<img data-src="img/analisis/mariadb_logo.png" alt="MariaDB" width="700"/>
+						</div>
+					</div>
+				</section>
+
+				<!-- Seleccion de herramientas, cliente -->
+				<section data-auto-animate>
+					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
+						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
+					</object>
+					<h4>
+						Selección de herramientas
+						<br>
+						<small>Cliente</small>
+					</h4>
+					<div class="r-stack">
+						<!-- Javascript logo -->
+						<div style="background-color: #fff;" class="">
+							<img data-src="img/analisis/javascript_logo.png" alt="Javascript" width="400"/>
+						</div>
+
+						<!-- VueJS logo -->
+						<div style="background-color: #fff;" class="fragment">
+							<img data-src="img/analisis/vuejs_logo.png" alt="VueJS" width="700"/>
+						</div>
+
+						<!-- Tailwind-css logo -->
+						<div style="background-color: #fff" class="fragment">
+							<img data-src="img/analisis/tailwind-css_logo.png" alt="Tailwind" width="600" />
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- Diseño del proyecto -->
+			<section data-transition="fade">
+				<!-- Portada de diseño -->
+				<section data-auto-animate>
+					<h3>Diseño</h3>
+					<object data-id="diseno-svg" type="image/svg+xml" data="img/svg/diseno.svg" class="r-stretch">
+					</object>
+					<aside class="notes">
+						<p>Una vez terminado el análisis</p>
+					</aside>
+				</section>
+
+				<!-- Diseño de la interfaz -->
+				<section data-auto-animate>
+					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
+						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
+					</object>
+					<h4>De la interfaz</h4>
+					<div class="r-stack">
+						<!-- Diseño de la interfaz -->
+						<div style="background-color: #fff;" class="">
+							<img data-src="img/diseno/diseno_interfaz.png" alt="Diseño de la interfaz" width="700"/>
+						</div>
+
+						<!-- Diseño de la interfaz -->
+						<div style="background-color: #fff;" class="fragment">
+							<img data-src="img/diseno/diseno_interfaz_2.png" alt="Diseño de la interfaz" width="700"/>
+						</div>
+					</div>
 				</section>
 			</section>
 
