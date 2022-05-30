@@ -1,40 +1,360 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>Presentación de tesis</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/sunblind.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<!-- <link rel="stylesheet" href="plugin/highlight/zenburn.css"> -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github.min.css">
+
+	<script src="../socket.io/socket.io.js"></script>
+	<script src="../_remote/plugin.js"></script>
+	<script src="../_remote/remotezoom.js"></script>
+</head>
+<style>
+	.justified {
+		text-align: justify;
+		text-justify: inter-word;
+		/* Text indent on first line */
+		text-indent: 1em;
+	}
+
+	.columns {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: stretch;
+	}
+
+	.column {}
+</style>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Portada -->
+			<section data-background-image="img/logotipo-uacj.png" data-background-size="25%"
+				data-background-position="top right">
+				<h2>Sistema de monitoreo y control para estaciones meteorológicas</h2>
+				<p>Presente: Teo González Calzada - 142912</p>
+				<div style="margin-top: 3rem;">Asesor: Mtro. Fernando Estrada Saldaña</div>
+				<div>Fecha: 2022-06-01</div>
+			</section>
+
+			<!-- Definición del problema -->
+			<section>
+				<h2>Definición del problema</h2>
+				<!-- Ideas principales únicamente, una sola oración -->
+				<p class="justified">
+					La falta de una plataforma estandarizada para el monitoreo de estaciones meteorológicas, provoca que sea
+					una dificultad creciente el mantener redes densas de monitoreo climatológico.
+
+					<!-- La falta de una plataforma estandarizada para el monitoreo de estaciones meteorológicas que permita un monitoreo continuo y control de diversos tipos de estaciones, así como la disponibilidad del acceso a los datos, y un registro de incidentes crea una dificultad creciente para los administradores de redes de monitoreo meteorológico. Con redes cada vez más densas que son más accesibles económicamente y menos complejas de crear, se hace notar la necesidad de un sistema estandarizado y compatible con soluciones existentes para el monitoreo de las estaciones. -->
+				</p>
+				<aside class="notes">
+					Una plataforma estandarizada nos ayudaría a tener un control más sencillo de las estaciones
+					meteorológicas. Las plataformas existentes, como Nagios e Icinga hacen que sea complicado el implementar
+					un sistema como este, desarrollado con el objetivo de ser un sistema genérico, a este problema
+					especializado.
+				</aside>
+			</section>
+
+			<!-- Objetivo general -->
+			<section>
+				<h2>Objetivo general</h2>
+				<p class="justified">Desarrollar un sistema de monitoreo y control de estaciones meteorológicas para
+					personal no especializado, capaz de proveer datos y herramientas que coadyuven en el mantenimiento
+					preventivo y correctivo de las mismas.</p>
+			</section>
+
+			<!-- Objetivos específicos -->
+			<section>
+				<section data-auto-animate>
+					<h2>Objetivos específicos</h2>
+					<li>Desarrollar un sistema modular central para coordinar y recolectar los datos del estado de las
+						estaciones.</li>
+				</section>
+				<section data-auto-animate>
+					<h2>Objetivos específicos</h2>
+					<li style="color: var(--text-light-color)">Desarrollar un sistema modular central para coordinar y
+						recolectar los datos del estado de las estaciones.</li>
+					<li>Diseñar un API REST para consultar el estado de las estaciones meteorológicas.</li>
+					<li>Diseñar e implementar una interfaz gráfica para monitorear el estado de las estaciones.</li>
+				</section>
+				<section data-auto-animate>
+					<h2>Objetivos específicos</h2>
+					<li style="color: var(--text-light-color)">Desarrollar un sistema modular central para coordinar y
+						recolectar los datos del estado de las estaciones.</li>
+					<li style="color: var(--text-light-color)">Diseñar un API REST para consultar el estado de las estaciones
+						meteorológicas.</li>
+					<li style="color: var(--text-light-color)">Diseñar e implementar una interfaz gráfica para monitorear el
+						estado de las estaciones.</li>
+					<li>Integrar las diferentes estaciones meteorológicas existentes al sistema creando los controladores
+						correspondientes.</li>
+					<li>Integrar un sistema existente de notificaciones/alertas de terceros para fallos críticos de las
+						estaciones.</li>
+				</section>
+			</section>
+
+			<!-- Justificación -->
+			<section>
+				<h2>Impactos</h2>
+				<!-- Three columns of divs, each with an SVG icon -->
+				<div class="columns">
+					<div class="column fragment">
+						<object type="image/svg+xml" data="img/svg/bulb.svg" style="height: 200px; float: left;">
+						</object>
+					</div>
+					<div class="column fragment">
+						<object type="image/svg+xml" data="img/svg/money.svg" style="height: 200px; float: left;">
+						</object>
+					</div>
+					<div class="column fragment">
+						<object type="image/svg+xml" data="img/svg/eco-gear.svg" style="height: 200px; float: left;">
+						</object>
+					</div>
+					<aside class="notes">
+						<p>
+							EL impacto tecnológico es la organización de los datos
+						</p>
+						<p>
+							El impacto económico es un uso más eficiente de los recursos humanos de los integrantes de CECATEV.
+						</p>
+
+						<p>
+							El impacto ecológico es la mayor disponibilidad de análisis y tratamiento de los datos, debido a
+							una mayor availability de los mismos.
+						</p>
+					</aside>
+			</section>
+
+			<!-- Desarrollo del proyecto -->
+			<!-- <section>
+				<h2>Desarrollo del proyecto</h2>
+			</section> -->
+
+			<!-- Metodología -->
+			<section data-transition="fade-out">
+				<h3>Metodología</h3>
+				<svg viewBox="0 0 720 555" version="1.1" id="svg5" class="r-stretch" xmlns="http://www.w3.org/2000/svg">
+					<g id="layer1" transform="matrix(1.000093, 0, 0, 1.000093, -358.705231, -98.573654)">
+						<ellipse
+							style="display:inline;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:1.58026;stroke-linecap:round;paint-order:stroke fill markers"
+							id="path114805" cx="711.777" cy="375.135" rx="230.209" ry="230.874" />
+						<text
+							style="fill: rgb(137, 133, 132); font-family: 'Noto Sans'; font-size: 121.3px; line-height: 151.604px; stroke-width: 3.03209px; white-space: pre;"
+							id="text100039" x="579.232" y="418.405">ÁGIL</text>
+						<g id="g382" style="display:inline" class="fragment" data-fragment-index="7"
+							transform="matrix(1.1537051,0,0,1.1537051,211.33138,-163.56834)">
+							<path
+								style="fill:#a14293;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+								d="m 325.01695,608.54237 c 0,0 25.22034,19.52543 50.44068,26.84746 25.22034,7.32204 126.20339,8.0339 126.20339,8.0339 l 177.8644,0.10169 0.20339,-20.54237 72,41.69492 -70.77966,43.11864 -0.40678,-21.15254 -278.03389,1.42373 -103.52543,-45.15254 z"
+								id="path24805" />
+							<text
+								style="fill: rgb(255, 255, 255); font-family: 'Noto Sans'; font-size: 25.0898px; line-height: 31.3623px; stroke-width: 0.627244px; white-space: pre;"
+								id="text149639-9" transform="scale(0.9816796,1.0186623)" x="556.746"
+								y="660.011">LANZAMIENTO</text>
+						</g>
+						<g id="g408" style="display:inline" class="fragment" data-fragment-index="6"
+							transform="matrix(1.153705, 0, 0, 1.153705, 211.331375, -163.568344)">
+							<path
+								style="fill:#cd1962;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+								d="m 254.87124,446.75234 c 0,0 -2.03805,30.87981 5.62406,65.35694 9.40459,42.31774 25.60042,53.2823 25.60042,53.2823 l 15.58944,-14.61577 6.57597,74.41994 -71.19069,-18.87114 16.60196,-13.08821 c 0,0 -27.84967,-27.22711 -37.53334,-73.99402 -9.68367,-46.76691 -2.31055,-77.54583 -2.31055,-77.54583 z"
+								id="path37485-3-7-5" />
+							<text
+								style="fill: rgb(255, 255, 255); font-family: 'Noto Sans'; font-size: 25.0898px; line-height: 31.3623px; stroke-width: 0.627244px; white-space: pre;"
+								id="text149639-7" transform="matrix(0.35770491,0.91418928,-0.94862942,0.37118069,0,0)"
+								x="517.223" y="-32.1455">EVALUACIÓN</text>
+						</g>
+						<g id="g403" style="display:inline" class="fragment" data-fragment-index="5"
+							transform="matrix(1.1537051,0,0,1.1537051,211.33138,-163.56834)">
+							<path
+								style="fill:#d03517;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+								d="m 360.33814,304.76457 c 0,0 -30.54935,12.03096 -54.76214,37.74324 -29.71914,31.55962 -33.54865,47.48178 -33.54865,47.48178 l 20.85022,4.68183 -57.86271,47.25968 -24.39587,-69.49155 20.15565,6.37776 c 0,0 8.22793,-29.17397 41.47047,-63.46466 33.24254,-34.29068 72.05716,-50.35527 72.05716,-50.35527 z"
+								id="path37485-3-7" />
+							<text
+								style="fill: rgb(255, 255, 255); font-family: 'Noto Sans'; font-size: 25.0898px; line-height: 31.3623px; stroke-width: 0.627244px; white-space: pre;"
+								id="text149639-0" transform="matrix(0.72331975,-0.66370429,0.68870794,0.75056929,0,0)"
+								x="-98.9729" y="445.589">DESPLIEGUE</text>
+						</g>
+						<g id="g398" style="display:inline" class="fragment" data-fragment-index="4"
+							transform="matrix(1.153705, 0, 0, 1.153705, 211.331375, -163.568344)">
+							<g id="g55376" transform="translate(-126.73527,-139.83685)"
+								style="fill:#f29200;fill-opacity:1;stroke:none">
+								<path
+									style="fill:#f29200;fill-opacity:1;stroke:none;stroke-width:0.992703px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+									d="m 663.42448,465.24601 c 0,0 -29.49271,-19.5927 -56.31994,-27.49189 -26.82724,-7.89918 -61.89033,-6.97266 -61.89033,-6.97266 l 3.14812,20.59313 -66.98689,-31.70303 51.68286,-52.62516 2.82928,21.34233 c 0,0 51.45062,-4.97444 92.9583,10.90229 41.50768,15.87673 59.48981,32.29775 59.48981,32.29775 z"
+									id="path37485-3-6" />
+							</g>
+							<text
+								style="fill: rgb(255, 255, 255); font-family: 'Noto Sans'; font-size: 25.0898px; line-height: 31.3623px; stroke-width: 0.627244px; white-space: pre;"
+								id="text149639-2" transform="scale(0.9816796,1.0186623)" x="416.274" y="280.65">PRUEBAS</text>
+						</g>
+						<g id="g392" style="display:inline" class="fragment" data-fragment-index="3"
+							transform="matrix(1.153705, 0, 0, 1.153705, 211.331375, -163.568344)">
+							<path
+								style="fill:#83ac28;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+								d="m 604.33695,488.73849 c 0,0 7.07016,-32.49723 -2.99704,-66.35032 -12.35663,-41.55179 -25.75611,-54.61048 -25.75611,-54.61048 l -14.16936,13.1733 -7.55476,-74.71934 70.74535,17.88057 -16.64444,13.82613 c 0,0 22.2508,35.54091 33.55152,68.55735 11.30071,33.01645 8.49488,84.82287 8.49488,84.82287 z"
+								id="path37485-3" />
+							<text
+								style="fill: rgb(255, 255, 255); font-family: 'Noto Sans'; font-size: 22.7521px; line-height: 28.4401px; stroke-width: 0.5688px; white-space: pre;"
+								id="text149639-9-3-0" transform="matrix(-0.28290461,-0.94003181,0.97544554,-0.29356245,0,0)"
+								x="-648.044" y="466.767">DESARROLLO</text>
+						</g>
+						<g id="g387" style="display:inline" class="fragment" data-fragment-index="2"
+							transform="matrix(1.153705, 0, 0, 1.153705, 211.331375, -163.568344)">
+							<path
+								style="fill:#30a6aa;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+								d="m 497.89906,629.34901 c 0,0 34.90093,-14.68889 59.25315,-40.26914 29.89029,-31.39759 31.35239,-44.87131 31.35239,-44.87131 l -18.98402,-6.61565 61.55425,-42.85786 20.13456,73.05971 -20.70984,-10.35492 c 0,0 -9.20266,25.54084 -32.2153,51.7746 -23.01264,26.23376 -73.63499,62.12952 -73.63499,62.12952 z"
+								id="path37485" />
+							<text
+								style="fill: rgb(255, 255, 255); font-family: 'Noto Sans'; font-size: 25.0898px; line-height: 31.3623px; stroke-width: 0.627244px; white-space: pre;"
+								id="text149639-9-3" transform="matrix(0.73459868,-0.6511986,0.67573113,0.76227313,0,0)"
+								x="-32.1559" y="825.613">DISEÑO</text>
+						</g>
+						<g id="g377" style="display:inline" class="fragment" data-fragment-index="1"
+							transform="matrix(1.153705, 0, 0, 1.153705, 211.331375, -163.568344)">
+							<path
+								style="fill:#184890;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+								d="m 127.71068,644.59375 315.82504,0.28763 -4.88981,-20.42219 68.16988,27.03784 -48.89823,55.51387 -4.02692,-18.69638 -326.17996,-1.72582 z"
+								id="path11142" />
+							<text
+								style="fill: rgb(255, 255, 255); font-family: 'Noto Sans'; font-size: 25.0898px; line-height: 31.3623px; stroke-width: 0.627244px; white-space: pre;"
+								id="text149639" transform="scale(0.98167958,1.0186623)" x="150.198" y="661.868">ANÁLISIS</text>
+						</g>
+					</g>
+				</svg>
+				<aside class="notes">
+					<p>
+						La metodología selccionada para el desarrollo del sistema fue la ágil, con un enfoque en el usuario.
+					</p>
+					<p>Esta metodología se caracteriza por sus múltiples iteraciones, y un proceso de mejora contínua.</p>
+					<p>La documentación es un proceso secundario, la documentación es producto del proceso.</p>
+				</aside>
+			</section>
+
+			<!-- Análisis del proyecto -->
+			<section data-transition="fade">
+				<!-- Portada de análisis -->
+				<section data-auto-animate>
+					<h3>Análisis</h3>
+					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg" class="r-stretch">
+					</object>
+				</section>
+
+				<!-- Análisis, de las estaciones -->
+				<section data-auto-animate>
+					<section data-auto-animate>
+						<div style="display: block;">
+							<h3>Análisis</h3>
+							<p></p>
+							<img src="img/analisis/conexion.png" alt="Estaciones" />
+						</div>
+						<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
+							style="height: 200px; float: left;">
+						</object>
+					</section>
+				</section>
+			</section>
+
+
+			<section>
+				<section>
+					<h3>Del módulo de monitoreo</h3>
+				</section>
+
+				<section>
+					<h2>Servicios</h2>
+					<pre><code class="r-stretch" data-trim data-noescape data-line-numbers="2|3-4|5,17|6|7-8|9-10|13-15|1-18">
+							service = {
+								"command": "echo $(awk '/root/{print $4}' /proc/mounts | awk -F , '{print $1}')",
+								"stdout": "ro",
+								"stderr": None,
+								"actions": {
+									 "read_write_enabled": {
+										  "description": "La estación está en modo escritura",
+										  "solution": "Reactivar el modo sólo lectura",
+										  "response_stdout": "rw",
+										  "response_stderr": None,
+						  
+										  # Solution and the expected solution result
+										  "command": "sudo remountro",
+										  "stdout": None,
+										  "stderr": None,
+									 }
+								}
+						  }						  
+						</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<h2>Resultados</h2>
+			</section>
+
+			<section>
+				<h2>Conclusiones</h2>
+			</section>
+
+			<section>
+				<h2>Trabajo futuro</h2>
+			</section>
+
+			<section>
+				<h2>Referencias</h2>
+			</section>
+
+			<section>
+				<section>
+					<h2>Demostración</h2>
+				</section>
+
+				<section data-background-iframe="https://cecatev.uacj.mx/meteoreo" data-preload data-auto-animate="">
+					<p style="background-color: rgba(22,22,22, 0.8); color: #fff; padding: 15px;">De la interfaz gráfica</p>
+				</section>
+
+				<section data-background-iframe="https://cecatev.uacj.mx/meteoreo" data-preload>
+					<p style="background-color: rgba(22,22,22, 0.8); color: #fff; padding: 15px; display: none;">De la
+						interfaz gráfica</p>
+				</section>
+			</section>
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			width: 960,
+			height: 540,
+			margin: 0.2,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [
+				RevealMarkdown,
+				RevealHighlight,
+				RevealNotes,
+				// RevealRemote, RevealRemoteZoom
+			]
+		});
+	</script>
+</body>
+
 </html>
