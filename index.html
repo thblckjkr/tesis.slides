@@ -54,14 +54,9 @@
 				<div>Fecha: 2022-06-01</div>
 
 				<aside class="notes">
-					<p>
-						El monitoreo meteorológico es importante para la prevención y mitigación de los riesgos ambientales, para recabar esta información, son importantes las estaciones meteorológicas.
-						<!-- Hay que recalcar que estamos monitoreando el equipo que está monitoreando meteorológicamente, para que no se entienda otra cosa. -->
-						<!-- Son dos tipos de monitoreo, el que hago a la estación, y el que las estaiones hacen. Nos enfocamos en el primero  -->
-					</p>
-					<p>
-						Proyecto de titulación para la carrera [CARRERA]
-					</p>
+					<p>Monitoreo meteorológico para la prevención y mitigación de los riesgos ambientales</p>
+					<p>Monitoreo de estaciones metereológicas</p>
+					<p>Proyecto de titulación para la carrera [CARRERA]</p>
 				</aside>
 			</section>
 
@@ -73,12 +68,9 @@
 					La falta de una plataforma estandarizada para el monitoreo de estaciones meteorológicas, provoca que sea una dificultad creciente el mantener redes densas de monitoreo climatológico.
 				</p>
 				<aside class="notes">
-					<p>
-						Una plataforma estandarizada nos ayudaría a tener un control más sencillo de las estaciones meteorológicas.
-					</p>
-					<p>
-						Plataformas existentes, Nagios, Icinga, son soluciones genéricas, demasiado técnicas
-					</p>
+					<p>Una plataforma estandarizada para tener un control más sencillo de las estaciones meteorológicas.</p>
+					<p>Plataformas existentes, Nagios, Icinga, soluciones demasiado técnicas y genéricas.</p>
+					<p>Falta de plataforma para resolver problemas comunes por personal no especializado.</p>
 				</aside>
 			</section>
 
@@ -89,9 +81,7 @@
 					personal no especializado, capaz de proveer datos y herramientas que coadyuven en el mantenimiento
 					preventivo y correctivo de las mismas.</p>
 				<aside class="notes">
-					<p>
-						Desarrollar un sistema de monitoreo y control de estaciones meteorológicas para personal no especializado, capaz de proveer datos y herramientas que coadyuven en el mantenimiento preventivo y correctivo de las mismas.
-					</p>
+					<p>Desarrollar un sistema de monitoreo y control de estaciones meteorológicas para personal no especializado, capaz de proveer datos y herramientas que coadyuven en el mantenimiento preventivo y correctivo de las mismas.</p>
 			</section>
 
 			<!-- Objetivos específicos -->
@@ -154,24 +144,11 @@
 						<p style="margin-top: 1rem;">Disponibilidad</p>
 					</div>
 					<aside class="notes">
-						<p>
-							EL impacto tecnológico es la organización de los datos
-						</p>
-						<p>
-							El impacto económico es un uso más eficiente de los recursos humanos de los integrantes de CECATEV.
-						</p>
-
-						<p>
-							El impacto ecológico es la mayor disponibilidad de análisis y tratamiento de los datos, debido a
-							una mayor availability de los mismos.
-						</p>
+						<p>EL impacto tecnológico es la organización de los datos</p>
+						<p>El impacto económico es un uso más eficiente de los recursos humanos de los integrantes de CECATEV.</p>
+						<p>El impacto ecológico es la mayor disponibilidad de análisis y tratamiento de los datos, debido a una mayor disponibilidad de los mismos.</p>
 					</aside>
 			</section>
-
-			<!-- Desarrollo del proyecto -->
-			<!-- <section>
-				<h2>Desarrollo del proyecto</h2>
-			</section> -->
 
 			<!-- Metodología -->
 			<section data-transition="fade-out">
@@ -283,7 +260,7 @@
 					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg" class="r-stretch">
 					</object>
 					<aside class="notes">
-						<p>Comencemos por el principio</p>
+						<p>Comencemos por el principio, hablemos sobre las estaciones meteorológicas.</p>
 					</aside>
 				</section>
 
@@ -298,15 +275,22 @@
 						<img class="fragment" data-src="img/analisis/station_campbell.jpg" alt="Estacion campbell" width="700"/>
 					</div>
 					<aside class="notes">
+						<p>Esta es la red de CECATEV, diferentes configuraciones de diferentes estaciones.</p>
 						<p>Mencionar los posibles errores de cada componente que se pueden diagnosticar o solucionar.</p>
 					</aside>
 				</section>
 
+				<!-- Consideraciones de seguridad -->
 				<section>
 					<h3>Consideraciones de seguridad</h3>
-					<p>
-						SSH
-					</p>
+					<!-- Image of a single davis station -->
+					<img data-src="img/analisis/estacion_davis.drawio.png" alt="Estación Davis" width="1000"/>
+					<aside class="notes">
+						<p>Retomando el modelo de una estación</p>
+						<p>La seguridad por medio de oscuridad NO es una solución.</p>
+						<p>Una sola llave SSH para el acceso a las estaciones, almacenada en el servidor.</p>
+						<p>Debido a lo peligroso que es ejecutar comandos SSH por web, sólo se puede una lista predefinida de comandos.</p>
+					</aside>
 				</section>
 
 				<!-- Selección de herramientas, servidor -->
@@ -319,27 +303,31 @@
 						<br>
 						<small>Servidor</small>
 					</h4>
-					<div class="">
+					<div class="columns">
 						<!-- Python logo -->
-						<div style="background-color: #fff;" class="">
-							<img data-src="img/analisis/python_logo.png" alt="Python" width="200"/>
+						<div style="background-color: rgba(255,255,255,0.9); z-index: 9999;">
+							<img data-src="img/analisis/python_logo.png" alt="Python" width="300"/>
 						</div>
 
 						<!-- Fastapi logo -->
-						<div style="background-color: #fff;" class="fragment">
-							<img data-src="img/analisis/fastapi_logo.png" alt="Fasapi" width="200"/>
+						<div style="background-color: #fff;">
+							<img data-src="img/analisis/fastapi_logo.png" alt="Fasapi" width="300"/>
 						</div>
-
+					</div>
+					<div class="columns">
 						<!-- Masonite-orm logo -->
-						<div style="background-color: #fff;" class="fragment">
-							<img data-src="img/analisis/masonite-orm_logo.png" alt="MasoniteORm" width="100"/>
+						<div style="background-color: #fff;">
+							<img data-src="img/analisis/masonite-orm_logo.png" alt="MasoniteORm" width="150"/>
 						</div>
 
 						<!-- MariaDB -->
-						<div style="background-color: #fff;" class="fragment">
-							<img data-src="img/analisis/mariadb_logo.png" alt="MariaDB" width="200"/>
+						<div style="background-color: #fff;">
+							<img data-src="img/analisis/mariadb_logo.png" alt="MariaDB" width="300"/>
 						</div>
 					</div>
+					<aside class="notes">
+						<p>Python debido a weewx y otras aplicaciones existentes. Ahorrar complejdad.</p>
+					</aside>
 				</section>
 
 				<!-- Seleccion de herramientas, cliente -->
@@ -352,20 +340,20 @@
 						<br>
 						<small>Cliente</small>
 					</h4>
-					<div class="r-stack">
+					<div class="columns">
 						<!-- Javascript logo -->
-						<div style="background-color: #fff;" class="">
-							<img data-src="img/analisis/javascript_logo.png" alt="Javascript" width="400"/>
+						<div style="background-color: #fff; z-index: 9999" class="">
+							<img data-src="img/analisis/javascript_logo.png" alt="Javascript"/>
 						</div>
 
 						<!-- VueJS logo -->
-						<div style="background-color: #fff;" class="fragment">
-							<img data-src="img/analisis/vuejs_logo.png" alt="VueJS" width="700"/>
+						<div style="background-color: #fff;" class="">
+							<img data-src="img/analisis/vuejs_logo.png" alt="VueJS"/>
 						</div>
 
 						<!-- Tailwind-css logo -->
-						<div style="background-color: #fff" class="fragment">
-							<img data-src="img/analisis/tailwind-css_logo.png" alt="Tailwind" width="600" />
+						<div style="background-color: #fff" class="">
+							<img data-src="img/analisis/tailwind-css_logo.png" alt="Tailwind"/>
 						</div>
 					</div>
 				</section>
@@ -385,7 +373,7 @@
 
 				<!-- Diseño de la interfaz -->
 				<section data-auto-animate>
-					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
+					<object data-id="diseno-svg" type="image/svg+xml" data="img/svg/analisis.svg"
 						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
 					</object>
 					<h4>De la interfaz</h4>
@@ -400,47 +388,56 @@
 							<img data-src="img/diseno/1.0.0_Stations_add.png" alt="Diseño de la interfaz" width="700"/>
 						</div>
 					</div>
+					<aside class="notes">
+						<p>La interfaz se desarrolló en figma.</p>
+						<p>Después de varias iteraciones se llegó a este diseño.</p>
+					</aside>
 				</section>
 
 				<!-- Diseño de la base de datos -->
 				<section data-auto-animate>
-					<object data-id="analisis-svg" type="image/svg+xml" data="img/svg/analisis.svg"
+					<object data-id="diseno-svg" type="image/svg+xml" data="img/svg/analisis.svg"
 						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
 					</object>
 					<h4>De la base de datos</h4>
 					<!-- Diseño de la base de datos -->
-					<div style="background-color: #fff;">
-						<img data-src="img/diseno/database_diagram.png" alt="Diseño de la interfaz" width="670"/>
+					<div class="columns">
+						<img data-src="img/diseno/database_diagram.png" alt="Diseño de la interfaz" width="750"/>
 					</div>
+					<aside class="notes">
+						<p>Estaciones, tabla principal.</p>
+						<p>Dado que no se busca una serie de tiempo, se eligió un desarrolo por eventos.</p>
+						<p>Estos eventos tienen soluciones, inicio y fin.</p>
+					</aside>
 				</section>
-					
 			</section>
 
 			<!-- Desarrollo del proyecto -->
-			<section data-transition="fade">
+			<section>
 				<!-- Portada de desarrollo -->
 				<section data-auto-animate>
 					<h3>Desarrollo</h3>
-					<object data-id="diseno-svg" type="image/svg+xml" data="img/svg/desarrollo.svg" class="r-stretch">
+					<object data-id="desarrollo-svg" type="image/svg+xml" data="img/svg/desarrollo.svg" class="r-stretch">
 					</object>
 					<aside class="notes">
-						<p>Se procedió al desarrollo</p>
+						<p>Después de tener el diseño definido, se comenzó con el desarrollo.</p>
 					</aside>
 				</section>
 
-				<section>
-					<h4>
-						Del módulo de monitoreo
-						<br>
-					</h4>
+				<section data-auto-animate>
+					<object data-id="desarrollo-svg" type="image/svg+xml" data="img/svg/desarrollo.svg"
+						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
+					</object>
+					<h4>Del módulo de monitoreo</h4>
 					<div>
-						<!-- Diseño de la base de datos -->
-						<div style="background-color: #fff;">
-							<img data-src="img/desarrollo/monitoring_diagram.drawio.png" alt="Diagrama de monitoreo" width="670"/>
+						<!-- Diagrama de actividades -->
+						<div style="z-index: 999;">
+							<img data-src="img/desarrollo/monitoring_diagram.drawio.png" alt="Diagrama de actividades" width="670"/>
 						</div>
 					</div>
 					<aside class="notes">
-						Diagrama de actividades
+						<p>Diagrama de actividades, monitor, controlador, ejecutor, servicios</p>
+						<p>Este diseño es MODULAR, todo puede ser instanciado.</p>
 					</aside>
 				</section>
 
@@ -470,6 +467,10 @@
 								}
 						  }						  
 						</code></pre>
+						<aside class="notes">
+							<p>Lo relevante de este código es su extensibilidad y modularidad.</p>
+							<p>Profundidad n y complejidad infinita.</p>
+						</aside>
 				</section>
 
 				<section>
@@ -487,11 +488,18 @@ def get_station(uuid: str):
 	result.incidents = result.events.serialize()
 	return result.serialize()
 					</code></pre>
+					<aside class="notes">
+						<p>Ejemplo básico de una ruta del API</p>
+					</aside>
 				</section>
 
 				<section>
 					<h4>Del API</h4>
 					<iframe class="r-stretch" style="width: max-content;" data-src="http://148.210.21.98:81/api/v1/docs" data-preload></iframe>
+					<aside class="notes">
+						<p>Documentación del API</p>
+						<!-- TODO: En caso de que no haya internet, cargar screenshot -->
+					</aside>
 				</section>
 
 				<section>
@@ -502,7 +510,7 @@ def get_station(uuid: str):
 					</div>
 					<aside class="notes">
 						<p>
-							Resaltar que clínica universitaria no es igual a rancho escuela, y mencionar que la totalidad de las estaciones no está integrada. Pero no es tan complicado. 	MODULARIDAD.</aside>
+							Resaltar que clínica universitaria no es igual a rancho escuela, y mencionar que la totalidad de las estaciones no está integrada. MODULARIDAD.</aside>
 						</p>
 				</section>
 
@@ -527,6 +535,9 @@ new Vue({
 		});
 	},
 }).$mount('#app')</code></pre>
+				<aside class="notes">
+					<p>No es necesario perder tiempo en esta diapositiva.</p>
+				</aside>
 				</section>
 
 				<section>
@@ -535,6 +546,9 @@ new Vue({
 					<div style="background-color: #fff;">
 						<img data-src="img/desarrollo/2.0.1-onesignal-notifications.png" alt="Notificaciones" width="800"/>
 					</div>
+					<aside class="notes">
+						<p>Imagen de ejemplo de notificaciones.</p>
+					</aside>
 				</section>
 
 			</section>
@@ -547,7 +561,8 @@ new Vue({
 					<object data-id="diseno-svg" type="image/svg+xml" data="img/svg/pruebas.svg" class="r-stretch">
 					</object>
 					<aside class="notes">
-						<p>Se procedió a realizar pruebas</p>
+						<p>Hubo múltiples pruebas durante el desarrollo del proyecto</p>
+						<p>Documentadas solo las pruebas de el producto, antes de realizar lanzamiento.</p>
 					</aside>
 				</section>
 
@@ -557,37 +572,197 @@ new Vue({
 						<img class="fragment" data-src="img/pruebas/0.1.4-iit-ropi-disabled.png" alt="Ropi deshabilitado" width="1000"/>
 						<img class="fragment" data-src="img/pruebas/0.1.5-iit-ropi-fixed.png" alt="Prueba de la estación exitosa" width="1000"/>
 					</div>
+					<aside class="notes">
+						<p>3 clicks</p>
+						<p>prueba de estación virtual, luego de RoPI</p>
+					</aside>
 				</section>
 			</section>
 
+			<!-- Resto de la metodología -->
+			<section data-transition="fade">
+				<!-- Despliegue -->
+				<section data-auto-animate>
+					<h3>Despliegue</h3>
+					<object data-id="metodologia-svg" type="image/svg+xml" data="img/svg/despliegue.svg"
+						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
+					</object>
+					<div class="r-stack">
+						<code class="">yarn build && rsync -avz dist/ -e ssh al142912@cecatev.uacj.mx:/var/www/html/meteoreo</code>
+						<img data-src="img/meteoreo-api-update.png" alt="Imagen de actualización de API" width="800" class="fragment"/>
+					</div>
+					<aside class="notes">
+						<p>El despliegue se realizó en el sitio CECATEV y en un servidor por git y docker.</p>
+					</aside>
+				</section>
+
+				<!-- Evaluación -->
+				<section data-auto-animate>
+					<h3>Evaluación</h3>
+					<object data-id="metodologia-svg" type="image/svg+xml" data="img/svg/evaluacion.svg"
+						style="height: 180px; float: left; position: absolute; top: 0; left: 0;">
+					</object>
+					<img data-src="img/meteoreo-api-monitoring.png" alt="Imagen de monitoreo de API" width="800"
+						style="border: none; box-shadow: none;"/>
+					<aside class="notes">
+						<p>El sitio se instaló para monitorear las estaciones destino durante 20 días.</p>
+						<p>En este proceso se siguió aplicando un proceso de mejora contínua para mejorarlo</p>
+					</aside>
+				</section>
+
+				<!-- Evaluación -->
+				<section data-auto-animate>
+					<object data-id="metodologia-svg" type="image/svg+xml" data="img/svg/lanzamiento.svg"
+						style="height: 180px; float: left; top: 0; left: 0;">
+					</object>
+					<div>
+						<h3>Lanzamiento</h3>
+						<p>
+							El sitio fué lanzado con éxito a <br/>
+							<a href="https://cecatev.uacj.mx/meteoreo" target="_blank" rel="noopener noreferrer">https://cecatev.uacj.mx/meteoreo</a>
+						</p>
+					</div>
+					<aside class="notes">
+						<p>El sitio fué lanzado para el uso del personal de cecatev.</p>
+						<p>Con esto, se dió por finalizada la metodología y el desarrollo del proyecto.</p>
+					</aside>
+				</section>
+			</section>
+
+			<!-- Resultados -->
 			<section>
 				<section>
 					<h2>Resultados</h2>
 				</section>
 
+				<!-- Implementación de un nuevo servicio -->
 				<section>
 					<h4>Implementación de un nuevo servicio</h4>
+					<pre><code data-line-numbers>service = {
+   "command": "PERCENT=$(df /mnt/usb --output=pcent | tail -n 1 | tr -d '%'); " + \
+   "if (( $PERCENT > 80 )); then echo \"true $PERCENT\"; else echo \"false $PERCENT\"; fi",
+   "stdout": "false",
+   "stderr": None,
+   "actions": {
+      "disk_almost_full": {
+         "description": "El disco está casi lleno",
+         "solution": "Elimine algunos archivos de la estación",
+         "response_stdout": "true",
+         "response_stderr": None,
+      }
+   }
+}</code></pre>
+				<aside class="notes">
+					<p>Esto es importante debido a la modularidad del proyecto.</p>
+				</aside>
 				</section>
 
+				<section data-auto-animate>
+					<h4>Implementación de un nuevo servicio</h4>
+					<pre data-id="code-animation"><code data-line-numbers>from .base import BaseDriver
+from ..services import mysql, ropi, time, weewx
+
+DEFAULT_SERVICES_MAP = {
+	"mysql": mysql.service,
+	"weewx": weewx.service,
+	"RoPi": ropi.service,
+}
+[...]
+class RpiDavisStation(BaseDriver):
+
+  def __init__(self, station, services_map=None):
+    services_map = DEFAULT_SERVICES_MAP
+
+    # Refresh time on every instantiation
+    services_map['time'] = time.service()
+
+    return super().__init__(station, services_map)</code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h4>Implementación de un nuevo servicio</h4>
+					<pre data-id="code-animation"><code data-line-numbers="2,8">from .base import BaseDriver
+from ..services import mysql, ropi, time, weewx, disk
+
+DEFAULT_SERVICES_MAP = {
+	"mysql": mysql.service,
+	"weewx": weewx.service,
+	"RoPi": ropi.service,
+	"disk": disk.service,
+}
+[...]
+class RpiDavisStation(BaseDriver):
+
+  def __init__(self, station, services_map=None):
+    services_map = DEFAULT_SERVICES_MAP
+
+    # Refresh time on every instantiation
+    services_map['time'] = time.service()
+
+    return super().__init__(station, services_map)</code></pre>
+	 			<aside class="notes">
+					 <p>Sólo se requirió cambiar dos lineas del controlador.</p>
+					 <p>Este proceso tomó 12 minutos. De idea, a ejecución e implementación</p>
+				 </aside>
+				</section>
+
+				<!-- Información recabada -->
 				<section>
-					<img data-src="img/cumulated_downtime.png" alt="Tiempo de inaccesibilidad" width="800"/>
+					<h4>Información recabada</h4>
+					<div class="r-stack">
+						<img src="img/graphs/by_station_incidents.png" alt="Tiempo de inaccesibilidad" width="1000" class="fragment fade-out" data-fragment-index="0"/>
+						<img data-src="img/graphs/cumulated_downtime.png" alt="Tiempo de inaccesibilidad" width="800" class="fragment" data-fragment-index="0"/>
+					</div>
 					<aside class="notes">
-						Tiempo de inaccesibilidad acumulado
+						<p>En 20 días, se obtuvo la cantidad de incidentes de estaciones.</p>
+						<p>Y el downtime acumulado.</p>
 					</aside>
 				</section>
-				
+
+				<!-- Caso práctico -->
+				<section>
+					<h4>Caso práctico</h4>
+					<div class="r-stack">
+						<img src="img/rancho-data-loss.png" alt="Rancho perdiendo datos" width="850"/>
+						<img src="img/rancho-mysql-solved.png" alt="coorelacion con rancho de recuperación de datos" width="1100" class="fragment"/>
+					</div>
+					<aside class="notes">
+						<p>En la vista semanal de recolección de datos, se puede observar una ausencia de información.</p>
+						<p>Esto coincide con la puesta a correr de MySQL en la estación Rancho Escuela.</p>
+						<p>Debido a la complejidad de MySQL, esto no pudo ser resuelto de forma automática.</p>
+					</aside>
+				</section>
 			</section>
 
+			<!-- Conclusiones -->
 			<section>
 				<h2>Conclusiones</h2>
+				<p>Se desarrolló de manera exitosa y funcional el desarrollar una herramienta para un mantenimiento preventivo y correctivo,
+					<span class="fragment">incluyendo los elementos descritos en los objetivos específicos.</span>
+				</p>
+				<aside class="notes">
+					<p>Fue desarrollado, implementado y lanzado sin problemas mayores.</p>
+				</aside>
 			</section>
 
+			<!-- Trabajo futuro -->
 			<section>
 				<h2>Trabajo futuro</h2>
+				<ul>
+					<li>El sistema requiere intervención para resolver un problema conocido, esto es posible automatizarlo.</li>
+					<li class="fragment">Un sistema de notificaciones inteligente y versátil.</li>
+				</ul>
+				<aside class="notes">
+					<p>La modularidad del sistema, permite que las indicaciones se puedan cumplir</p>
+				</aside>
 			</section>
 
+			<!-- Referencias -->
 			<section>
 				<h2>Referencias</h2>
+				<p>Los diagramas presentes en este documento son de autoría propia.</p>
+				<p>Las fotografías presentes en el documento fueron tomadas <br /> del archivo de estaciones de CECATEV de la UACJ.</p>
+				<p><small>Estas diapositivas fueron realizadas con RevealJS, y presentadas (probablemente) con RevealRemote.</small></p>
 			</section>
 
 			<section>
@@ -596,13 +771,8 @@ new Vue({
 				</section>
 
 				<section data-background-iframe="https://cecatev.uacj.mx/meteoreo" data-preload data-auto-animate="">
-					<p style="background-color: rgba(22,22,22, 0.8); color: #fff; padding: 15px;">De la interfaz gráfica</p>
 				</section>
 
-				<section data-background-iframe="https://cecatev.uacj.mx/meteoreo" data-preload>
-					<p style="background-color: rgba(22,22,22, 0.8); color: #fff; padding: 15px; display: none;">De la
-						interfaz gráfica</p>
-				</section>
 			</section>
 		</div>
 	</div>
@@ -628,7 +798,7 @@ new Vue({
 				RevealMarkdown,
 				RevealHighlight,
 				RevealNotes,
-				RevealRemote,
+				// RevealRemote,
 				// RevealRemoteZoom
 			]
 		});
