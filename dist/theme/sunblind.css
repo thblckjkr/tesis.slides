@@ -201,7 +201,10 @@ body {
   padding: 5px;
   overflow: auto;
   max-height: 400px;
-  word-wrap: normal; }
+  word-wrap: normal;
+  font-family: 'Cascadia Code','Hasklug Nerd Font', 'Source Code Variable', 'Consolas', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback';
+  font-weight: 400;
+}
 
 .reveal table {
   margin: auto;
