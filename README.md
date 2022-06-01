@@ -1,4 +1,4 @@
-Tenemos 20 minutos para exponer. Y considerar el tiempo de presentación.
+<!--Tenemos 20 minutos para exponer. Y considerar el tiempo de presentación.
 
 El video 
 
@@ -32,4 +32,6 @@ Mostrar claramente el producto desarrollado, dentro de las diapositivas.
 REcortar las imágenes de la validación (odonde está la maestra)
 Entiendo la razón de el tema de la presentación, pero siento que es poco probable que se vea bien en los proyectores de la universidad
 https://www.stinsondesign.com/blog/ultimate-guide-accessible-presentation-design
-https://graphicdesign.stackexchange.com/questions/69638/simulate-projector-like-colors
+https://graphicdesign.stackexchange.com/questions/69638/simulate-projector-like-colors-->
+
+Presentación para la defensa de titulación 
